@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import { link } from 'svelte-navigator';
+    import Favourite from './Favourite.svelte';
+
     export let gap = 10;
     export let maxColumnWidth = 250;
     
@@ -13,7 +15,7 @@
     $: columnCount = parseInt(galleryWidth / maxColumnWidth) || 1;
     $: columnCount && Draw();
     $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
-    
+
     onMount(Draw);
 
     function Draw() {
@@ -37,12 +39,14 @@
 
 {#if columns}
 <div id="gallery" bind:clientWidth={galleryWidth} style={galleryStyle}>
-    {#each columns as column}
+    {#each columns as column, i}
     <div class="column">
-        {#each column as url}
+        {#each column as url, j}
+        <!-- cambiar esto por la info del localstorage -->
         <a use:link href="photo/{imageIds[url]}" replace>
             <img src={url} alt="" />
         </a>
+        <Favourite photoId = {i + j * columnCount}></Favourite>
         {/each}
     </div>
     {/each}

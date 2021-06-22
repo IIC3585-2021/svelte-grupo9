@@ -1,14 +1,16 @@
 <script>
+    import {getPhotoById} from '../services/unsplash';
+    import { Router, Route } from "svelte-navigator";
+    import Favourite from './Favourite.svelte';
 
- import {getPhotoById} from '../services/unsplash';
- export let photoid;
- import { Router, Route } from "svelte-navigator";
+    export let photoid;
 
- const getPhoto = (idPhoto) => {
-    return getPhotoById({featured: true}, photoid)
- }
+    const getPhoto = (idPhoto) => {
+        return getPhotoById({featured: true}, photoid)
+    }
 
 </script>
+
 <Router>
     <Route path={photoid} let:params>
         <div class="card">
@@ -36,6 +38,7 @@
                 </div>
             </div>
         
+            <Favourite></Favourite>
             <div class="content">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Phasellus nec iaculis mauris. <a>@bulmaio</a>.

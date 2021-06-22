@@ -11,7 +11,7 @@ export const getRandomPhoto = async param => {
     const res = await axios.get(randomPhotoEndpoint, {
       params: {
         client_id: accessKey,
-        count: 30,
+        count: 10,
         ...param
       }
     });
