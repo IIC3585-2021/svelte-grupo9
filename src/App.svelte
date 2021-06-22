@@ -3,6 +3,8 @@
 	import { Router, Route } from "svelte-navigator";
 	import Detail from './components/imageDetails.svelte';
 	import MyGallery from './components/Gallery.svelte';
+	import GalleryCountries from './components/CountriesGalery.svelte'
+
 </script>
 <Router>
 	<head>
@@ -19,6 +21,7 @@
 	
 		<!-- <Route path="photo/:id" component={Detail} /> -->
 		<Route path="photo/*photoid" component={Detail} />
+		<Route path="/countries" component={GalleryCountries} />
 	
 </Router>
 <style>
