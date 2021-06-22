@@ -43,7 +43,7 @@
     <div class="column">
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
-        <a use:link href="photo/{imageIds[url]}" replace>
+        <a use:link href="photo/{i + j * columnCount}" replace>
             <img src={url} alt="" />
         </a>
         <Favourite photoId = {i + j * columnCount}></Favourite>

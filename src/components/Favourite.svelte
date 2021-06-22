@@ -9,9 +9,11 @@
   const favs = get(favourites);
 
   const handleClick = (i) => {
+      console.log(i, photoId)
       if (favs[i].includes(photoId)){
-          favs[i].filter(item => item !== photoId);
-          favourites.update(() => {return favs})
+          const newFavs = favs;
+          newFavs[i] = favs[i].filter(item => item !== photoId);
+          favourites.update(() => {return newFavs})
           isFavourite[i] = false;
       }
       else{

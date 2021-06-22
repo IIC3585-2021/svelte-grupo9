@@ -1,14 +1,12 @@
 <script>
-    import {getPhotoById} from '../services/unsplash';
     import { Router, Route } from "svelte-navigator";
     import Favourite from './Favourite.svelte';
+    import { gallery } from '../store'
+    import { get } from 'svelte/store'
 
     export let photoid;
-
-    const getPhoto = (idPhoto) => {
-        return getPhotoById({featured: true}, photoid)
-    }
-
+    const data = get(gallery)[photoid]
+    console.log('phid', data)
 </script>
 
 <Router>
@@ -16,13 +14,7 @@
         <div class="card">
             <div class="card-image">
             <figure class="image is-4by3">
-
-                {#await getPhoto(params.photoid)}
-                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder">
-                {:then data} 
                 <img src="{data["urls"]["regular"]}" alt="Placeholder">
-                {/await}
-                
             </figure>
             </div>
             <div class="card-content">
@@ -38,7 +30,7 @@
                 </div>
             </div>
         
-            <Favourite></Favourite>
+            <Favourite photoId={parseInt(photoid)}></Favourite>
             <div class="content">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Phasellus nec iaculis mauris. <a>@bulmaio</a>.
