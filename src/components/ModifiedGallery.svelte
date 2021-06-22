@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { link } from 'svelte-navigator';
     import Favourite from './Favourite.svelte';
+    import ImageContainer from './ImageContainer.svelte';
 
     export let gap = 10;
     export let maxColumnWidth = 250;
@@ -43,10 +44,7 @@
     <div class="column">
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
-        <a use:link href="photo/{i + j * columnCount}" replace>
-            <img src={url} alt="" />
-        </a>
-        <Favourite photoId = {i + j * columnCount}></Favourite>
+            <ImageContainer idPhoto={i + j * columnCount} url={url} ></ImageContainer>
         {/each}
     </div>
     {/each}

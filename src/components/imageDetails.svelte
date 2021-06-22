@@ -8,7 +8,7 @@
     const data = get(gallery)[photoid]
     
     const img = data["urls"]["regular"]
-    const img_user = data['user']['profile_image']['regular']
+    const img_user = data['user']['profile_image']['medium']
     const first_name = data['user']['first_name']
     const last_name = data['user']['last_name']
     const instagram_username = data['user']['instagram_username']
@@ -20,10 +20,10 @@
 
 <Router>
     <Route path={photoid} let:params>
-        <div class="card" style="width: 500px;">
-            <div class="card-image-top">
+        <div class="card">
+            <div class="card-image">
             <figure class="image is-4by3">
-                <img src={img}>
+                <img src={img} alt="Placeholder">
             </figure>
             </div>
             <div class="card-content">
