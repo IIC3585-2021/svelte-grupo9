@@ -38,8 +38,8 @@
 
 <div>
     {#each isFavourite as bool, i}
-        <div class="fav" on:click={() => handleClick(i)}>
-            <button>
+        <div class="fav">
+            <button on:click={() => handleClick(i)}>
                 {#if bool}
                         <FavoriteFilled20 />
                 {:else}
@@ -49,8 +49,6 @@
             <div class = "name"><p><small>{favouriteNamesArr[i]}</small></p></div>
         </div>
     {/each}
-    <!-- <FavoriteFilled20 />
-    <Favorite20 /> -->
 </div>
 
 <style>
