@@ -3,6 +3,7 @@
   import Favorite20 from "carbon-icons-svelte/lib/Favorite20";
   import { favourites, favouriteNames } from '../store'
   import { get } from 'svelte/store'
+  import { colors } from '../colors'
 
   export let photoId;
 
@@ -39,11 +40,11 @@
 <div>
     {#each isFavourite as bool, i}
         <div class="fav">
-            <button on:click={() => handleClick(i)}>
+            <button on:click={() => handleClick(i)} style={`background-color: ${colors[i]};`}>
                 {#if bool}
-                        <FavoriteFilled20 />
+                        <FavoriteFilled20/>
                 {:else}
-                        <Favorite20 />
+                        <Favorite20/>
                 {/if}
             </button>
             <div class = "name"><p><small>{favouriteNamesArr[i]}</small></p></div>
@@ -60,4 +61,5 @@
     .name{
         margin-left: 5px;
     }
+
 </style>
