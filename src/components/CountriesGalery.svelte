@@ -6,7 +6,7 @@ import { Router, Route } from "svelte-navigator";
 import { Loading } from "carbon-components-svelte";
 
  const getPhotos = (country) => {
-    return getPhotoByCountry({featured: true}, country)
+    return getPhotosByCountry({featured: true}, country)
  }
 </script>
 

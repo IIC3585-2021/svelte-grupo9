@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const accessKey = "gShsdtzVIBO2FSf4JJlS5t9QDldBNPGGXpvyPttwMsU";
+const accessKey = "oATOAhYStQlB8L6si3nuwRqscwn6v-bMRtgRZizy7q4";
 
 const apiEndpoint = "https://api.unsplash.com/";
 const randomPhotoEndpoint = `${apiEndpoint}photos/random/`;
