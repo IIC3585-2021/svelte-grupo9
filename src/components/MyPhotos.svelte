@@ -42,7 +42,7 @@
 <div>
     {#each favouriteNamesStore as favouriteName, i_fn}
         <InputFavourite i_fn={i_fn} favouriteName={favouriteName} />
-            <Gallery gap="10" maxColumnWidth="200" favourite={false}>
+            <Gallery gap="10" maxColumnWidth="200" favourite={false} hideFav={true}>
                 {#each galleryCats as cat}
                     {#each favouritesStore[cat][i_fn] as photoNumber}
                         {console.log("nro foto", photoNumber)}

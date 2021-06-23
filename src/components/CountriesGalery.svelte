@@ -42,9 +42,8 @@ let countryTag = flags[countryname];
             <img class="is-rounded" src="https://flagcdn.com/w1280/{countryTag}.png">
           </figure>
         <h1 class="title">{countryname}</h1>
-        <Gallery gap="7" maxColumnWidth="200" category="chile">
-
-            {#await getPhotos("chile")}
+        <Gallery gap="7" maxColumnWidth="200" category={countryname} hideFav={false}>
+            {#await getPhotos(countryname)}
                 <Loading />
             {:then data} 
                 {#each data as usImage}

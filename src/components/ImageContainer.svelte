@@ -6,6 +6,7 @@
     export let url;
     export let code;
     export let category;
+    export let hideFav;
     export let flags = false;
     export let favourites = false;
 
@@ -21,14 +22,16 @@
         <a use:link href="photo/{idPhoto}" replace>
             <img src={url} alt="">
         </a>
-        {#if show}
-            {#if favourites}
-                <Favourite photoId={code} category={category}></Favourite>
-            {:else}
-                <Favourite photoId={idPhoto} category={category}></Favourite>
-            {/if}
+        {#if !hideFav}
+            {#if show}
+                {#if favourites}
+                    <Favourite photoId={code} category={category}></Favourite>
+                {:else}
+                    <Favourite photoId={idPhoto} category={category}></Favourite>
+                {/if}
 
-        {/if}   
+            {/if}   
+        {/if}
     {:else}
         <a use:link href="countries/{code}" replace>
             <img src={url} alt="">

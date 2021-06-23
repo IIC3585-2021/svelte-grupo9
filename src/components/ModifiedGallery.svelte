@@ -7,6 +7,7 @@
     export let flag = false;
     export let favourite = false;
     export let category;
+    export let hideFav;
     
     let slotHolder = null;
     let columns = [];
@@ -46,7 +47,7 @@
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
             <!-- {console.log(imageIds[url])} -->
-            <ImageContainer favourites={favourite} code={imageIds[url]} idPhoto={i + j * columnCount} url={url} flags={flag} category={category}></ImageContainer>
+            <ImageContainer favourites={favourite} code={imageIds[url]} idPhoto={i + j * columnCount} url={url} flags={flag} category={category} hideFav={hideFav}></ImageContainer>
         {/each}
     </div>
     {/each}

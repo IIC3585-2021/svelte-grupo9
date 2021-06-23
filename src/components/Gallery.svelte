@@ -21,7 +21,7 @@
     }
 </script>
 
-<Gallery gap="10" maxColumnWidth="200" category="random">
+<Gallery gap="10" maxColumnWidth="200" category="random" hideFav={false}>
 
     {#await getGalleryPhoto()}
         <Loading />
