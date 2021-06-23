@@ -5,6 +5,7 @@ const accessKey = "oATOAhYStQlB8L6si3nuwRqscwn6v-bMRtgRZizy7q4";
 const apiEndpoint = "https://api.unsplash.com/";
 const randomPhotoEndpoint = `${apiEndpoint}photos/random/`;
 const photoByIdEndpoint = `${apiEndpoint}photos/`;
+const photoBySearchEndpoint = `${apiEndpoint}search/photos/`;
 
 export const getRandomPhoto = async param => {
   try {
@@ -51,7 +52,7 @@ export const getPhotosByCountry = async (param, country) => {
   console.log("HOLA");
   try {
     console.log(country);
-      const res = await axios.get(photoByIdEndpoint, {
+      const res = await axios.get(photoBySearchEndpoint, {
         headers: {
           'Cache-Control': 'no-cache',
           'Pragma': 'no-cache',
