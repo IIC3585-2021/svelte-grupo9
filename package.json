@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --no-clear"
+    "dev": "rollup -c -w -s",
+    "start": "sirv public --no-clear --single"
   },
   "devDependencies": {
     "@colorfuldots/svelteit": "^1.0.0-alpha.7",

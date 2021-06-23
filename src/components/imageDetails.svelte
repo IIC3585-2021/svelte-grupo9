@@ -6,8 +6,8 @@
 
     export let photoid;
     export let category;
-
-    const data = get(gallery)[category][photoid]
+    const theGallery = get(gallery)
+    const data = theGallery[category][photoid]
     
     const img = data["urls"]["regular"]
     const img_user = data['user']['profile_image']['medium']
