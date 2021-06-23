@@ -6,6 +6,7 @@
 	import GalleryCountries from './components/CountriesGalery.svelte'
 	import flagsGallery from './components/flagsGallery.svelte';
 
+	import MyPhotos from './components/MyPhotos.svelte';
 </script>
 <Router>
 	<head>
@@ -25,6 +26,7 @@
 		<Route path="countries" component={flagsGallery} />
 		<Route path="countries/*countryname" component={GalleryCountries} />
 	
+		<Route path="myphotos" component={MyPhotos} />
 </Router>
 <style>
 	
