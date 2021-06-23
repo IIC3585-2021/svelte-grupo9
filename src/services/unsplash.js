@@ -52,9 +52,15 @@ export const getPhotosByCountry = async (param, country) => {
   try {
     console.log(country);
       const res = await axios.get(photoByIdEndpoint, {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '1',
+        },
         params: {
           client_id: accessKey,
           query: country,
+          page: Math.floor((Math.random() * 10) + 1),
           ...param
         }
       })
