@@ -19,9 +19,13 @@
 
 <div on:mouseenter={toggleShow} on:mouseleave={toggleShow}>
     {#if !flags}
-        <a use:link href="/photo/{category}/{idPhoto}" replace>
+        {#if !hideFav}
+            <a use:link href="/photo/{category}/{idPhoto}" replace>
+                <img src={url} alt="">
+            </a>
+        {:else}
             <img src={url} alt="">
-        </a>
+        {/if}
         {#if !hideFav}
             {#if show}
                 {#if favourites}
