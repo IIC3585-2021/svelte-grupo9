@@ -16,25 +16,20 @@
         favouritesStore = newVal;
     })
 
-    const handleClick = () => {
-       
-        const favouritesUpdated = get(favourites);
-        favouritesUpdated.splice(i_fn, 1);
-        favourites.update(() => {
-            return favouritesUpdated;
-        })
-    }
 
 </script>
 
 <div>
     {#each favouriteNamesStore as favouriteName, i_fn}
         <InputFavourite i_fn={i_fn} favouriteName={favouriteName} />
-        <Gallery gap="10" maxColumnWidth="200">
-            {#each favouritesStore[i_fn] as photoNumber}
-            <img id="{photoNumber}" src="{galleryStore[photoNumber]["urls"]["regular"]}" alt="">
-            {/each}
-        </Gallery>
+        <!-- {#each favouritesStore as collection} -->
+            <Gallery gap="10" maxColumnWidth="200">
+                {#each favouritesStore[i_fn] as photoNumber}
+                    {console.log("nro foto", photoNumber)}
+                    <img id="{photoNumber}" src="{galleryStore[photoNumber]["urls"]["regular"]}" alt="">
+                {/each}
+            </Gallery>
+        <!-- {/each} -->
     {/each}
 </div>
 
