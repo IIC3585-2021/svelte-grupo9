@@ -36,7 +36,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary" use:link href="myphotos" replace>
+            <a class="button is-primary" use:link href="/myphotos" replace>
               <strong>Mis Fotos</strong>
             </a>
           </div>

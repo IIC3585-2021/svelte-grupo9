@@ -9,7 +9,6 @@
   export let category;
   let isFavourite = []
 
-  console.log('fab', category)
   const handleClick = (i) => {
       console.log(i, photoId)
       if (favs[category][i].includes(photoId)){

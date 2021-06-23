@@ -19,7 +19,7 @@
 
 <div on:mouseenter={toggleShow} on:mouseleave={toggleShow}>
     {#if !flags}
-        <a use:link href="photo/{idPhoto}" replace>
+        <a use:link href="/photo/{category}/{idPhoto}" replace>
             <img src={url} alt="">
         </a>
         {#if !hideFav}

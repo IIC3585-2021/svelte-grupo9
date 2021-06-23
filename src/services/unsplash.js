@@ -49,7 +49,6 @@ export const getPhotoById = async (param, photoId) => {
 }
 
 export const getPhotosByCountry = async (param, country) => {
-  console.log("HOLA");
   try {
     console.log(country);
       const res = await axios.get(photoBySearchEndpoint, {
@@ -67,8 +66,7 @@ export const getPhotosByCountry = async (param, country) => {
       })
   
       if (res.status == 200){
-          console.log(res.data)
-           return res.data
+           return res.data['results']
           }
           else return null
           

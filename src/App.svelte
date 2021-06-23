@@ -22,7 +22,7 @@
 		<Route path="/" component={MyGallery}/>
 	
 		<!-- <Route path="photo/:id" component={Detail} /> -->
-		<Route path="photo/*photoid" component={Detail} />
+		<Route path="photo/:category/:idPhoto" component={Detail} />
 		<Route path="countries" component={flagsGallery} />
 		<Route path="countries/*countryname" component={GalleryCountries} />
 	

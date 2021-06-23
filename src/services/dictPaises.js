@@ -2,7 +2,6 @@ import _ from "lodash"
 
 const countriesDict = {
     "ad": "Andorra",
-    "ae": "United Arab Emirates",
     "af": "Afghanistan",
     "ag": "Antigua and Barbuda",
     "ai": "Anguilla",
