@@ -3,17 +3,21 @@
     import { get } from 'svelte/store'
     import { colors } from '../colors'
     import Gallery from './ModifiedGallery.svelte';
+    import InputFavourite from './InputFavourite.svelte'
 
     const galleryStore = get(gallery);
     const favouritesStore = get(favourites);
-    const favouriteNamesStore = get(favouriteNames);
+    let favouriteNamesStore = get(favouriteNames);
 
+    favouriteNames.subscribe((newVal) => {
+        favouriteNamesStore = newVal;
+    })
 
 </script>
 
 <div>
     {#each favouriteNamesStore as favouriteName, i_fn}
-        <input class="title" style={`background-color: ${colors[i_fn]};`} value={favouriteName}/>
+        <InputFavourite i_fn={i_fn} favouriteName={favouriteName} />
         <Gallery>
             {#each favouritesStore[i_fn] as photoNumber}
             <img id="{photoNumber}" src={galleryStore[photoNumber]["urls"]["regular"]} alt="">
@@ -22,11 +26,3 @@
     {/each}
 </div>
 
-<style>
-    .title{
-        display: flex;
-        align-items: center;
-        height: 40px;
-        justify-content: center;
-    }
-</style>
