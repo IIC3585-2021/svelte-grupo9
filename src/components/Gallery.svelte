@@ -1,8 +1,6 @@
 <script>
 import Gallery from './ModifiedGallery.svelte';
-import {getPhotosByCountry} from '../services/unsplash';
-export let country;
-import { Router, Route } from "svelte-navigator";
+import {getPhotoById} from '../services/unsplash';
 import { Loading } from "carbon-components-svelte";
 
  const getPhotos = (country) => {

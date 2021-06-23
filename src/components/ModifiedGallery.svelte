@@ -5,6 +5,7 @@
 
     export let gap = 10;
     export let maxColumnWidth = 250;
+    export let flag = false;
     
     let slotHolder = null;
     let columns = [];
@@ -43,10 +44,17 @@
     <div class="column">
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
+
+        {#if flag}
+        <a use:link href="country/{i + j * columnCount}" replace>
+            <img src={url} alt="" />
+        </a>
+        {:else}
         <a use:link href="photo/{i + j * columnCount}" replace>
             <img src={url} alt="" />
         </a>
         <Favourite photoId = {i + j * columnCount}></Favourite>
+        {/if}
         {/each}
     </div>
     {/each}
