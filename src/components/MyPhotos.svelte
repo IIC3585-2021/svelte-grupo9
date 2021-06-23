@@ -2,25 +2,21 @@
     import { gallery, favourites, favouriteNames } from '../store'
     import { get } from 'svelte/store'
     import { colors } from '../colors'
+    import InputFavourite from './InputFavourite.svelte'
 
     const galleryStore = get(gallery);
     const favouritesStore = get(favourites);
     const favouriteNamesStore = get(favouriteNames);
 
+    // favouriteNames.suscribe(favNames => {
+    //     favouriteNamesStore = favNames;
+    // })
 
 </script>
 
 <div>
     {#each favouriteNamesStore as favouriteName, i_fn}
-        <input class="title" style={`background-color: ${colors[i_fn]};`} value={favouriteName}/>
+        <InputFavourite i_fn={i_fn} favouriteName={favouriteName} />
     {/each}
 </div>
 
-<style>
-    .title{
-        display: flex;
-        align-items: center;
-        height: 40px;
-        justify-content: center;
-    }
-</style>
