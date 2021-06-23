@@ -6,7 +6,6 @@
     import { get } from 'svelte/store'
 
     const getGalleryPhoto = async () => {
-        console.log('gola', get(gallery))
         if (get(gallery).length === 0) {
             const data = await getRandomPhoto()
             console.log(data);

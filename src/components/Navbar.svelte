@@ -1,5 +1,5 @@
 <script>
-    import { Link } from "svelte-navigator";
+    import { link } from 'svelte-navigator';
 </script>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -30,7 +30,7 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button is-primary" use:link href="myphotos" replace>
               <strong>Mis Fotos</strong>
             </a>
           </div>
