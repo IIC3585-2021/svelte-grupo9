@@ -6,7 +6,16 @@
 
     export let photoid;
     const data = get(gallery)[photoid]
-    console.log('phid', data)
+    
+    const img = data["urls"]["regular"]
+    const img_user = data['user']['profile_image']['medium']
+    const first_name = data['user']['first_name']
+    const last_name = data['user']['last_name']
+    const instagram_username = data['user']['instagram_username']
+    const alt_description = data['alt_description']
+    const unsplash_link = data['user']['links']['html']
+    const unsplash_name = data['user']['username']
+    const date = data['promoted_at'].split("T")[0]
 </script>
 
 <Router>
@@ -14,31 +23,34 @@
         <div class="card">
             <div class="card-image">
             <figure class="image is-4by3">
-                <img src="{data["urls"]["regular"]}" alt="Placeholder">
+                <img src={img} alt="Placeholder">
             </figure>
             </div>
             <div class="card-content">
             <div class="media">
                 <div class="media-left">
                 <figure class="image is-48x48">
-                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder">
+                    <img src={img_user} alt="Placeholder">
                 </figure>
                 </div>
                 <div class="media-content">
-                <p class="title is-4">John Smith</p>
-                <p class="subtitle is-6">@johnsmith</p>
+                <p class="title is-4">{first_name} {last_name}</p>
+                <p class="subtitle is-6">@{instagram_username}</p>
                 </div>
             </div>
-        
-            <Favourite photoId={parseInt(photoid)}></Favourite>
             <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                <a href="#">#css</a> <a href="#">#responsive</a>
+                {#if alt_description}
+                    {alt_description} 
+                {/if}
+                <a href={unsplash_link}>@{unsplash_name}</a>.
                 <br>
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                <time>{date}</time>
             </div>
+            <div class="content">
+                <Favourite photoId={parseInt(photoid)}></Favourite>
             </div>
+        </div>
+
         </div>
     </Route>
 </Router>
