@@ -4,7 +4,6 @@
     import { Loading } from "carbon-components-svelte";
     import { gallery } from '../store'
     import { get } from 'svelte/store'
-
     const getGalleryPhoto = async () => {
         if (get(gallery).length === 0) {
             const data = await getRandomPhoto()
@@ -38,4 +37,3 @@
 	:global(img) { opacity: .9; transition: all .2s }
 	:global(img):hover { opacity: 1; transform: scale(1.04) }
 </style>
-

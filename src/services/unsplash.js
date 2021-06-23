@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const accessKey = "gShsdtzVIBO2FSf4JJlS5t9QDldBNPGGXpvyPttwMsU";
+const accessKey = "oATOAhYStQlB8L6si3nuwRqscwn6v-bMRtgRZizy7q4";
 
 const apiEndpoint = "https://api.unsplash.com/";
 const randomPhotoEndpoint = `${apiEndpoint}photos/random/`;
@@ -44,5 +44,36 @@ export const getPhotoById = async (param, photoId) => {
         console.error(exc);
         return null;
       }
+
+}
+
+export const getPhotosByCountry = async (param, country) => {
+  console.log("HOLA");
+  try {
+    console.log(country);
+      const res = await axios.get(photoByIdEndpoint, {
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache',
+          'Expires': '1',
+        },
+        params: {
+          client_id: accessKey,
+          query: country,
+          page: Math.floor((Math.random() * 10) + 1),
+          ...param
+        }
+      })
+  
+      if (res.status == 200){
+          console.log(res.data)
+           return res.data
+          }
+          else return null
+          
+    } catch (exc) {
+      console.error(exc);
+      return null;
+    }
 
 }

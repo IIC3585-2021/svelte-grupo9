@@ -6,6 +6,8 @@
 
     export let gap = 10;
     export let maxColumnWidth = 250;
+    export let flag = false;
+    export let favourite = false;
     
     let slotHolder = null;
     let columns = [];
@@ -44,7 +46,8 @@
     <div class="column">
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
-            <ImageContainer idPhoto={i + j * columnCount} url={url} ></ImageContainer>
+            <!-- {console.log(imageIds[url])} -->
+            <ImageContainer favourites={favourite} code={imageIds[url]} idPhoto={i + j * columnCount} url={url} flags={flag}></ImageContainer>
         {/each}
     </div>
     {/each}

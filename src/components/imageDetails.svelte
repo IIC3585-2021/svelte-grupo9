@@ -20,6 +20,7 @@
 
 <Router>
     <Route path={photoid} let:params>
+        <div class="box">
         <div class="card">
             <div class="card-image">
             <figure class="image is-4by3">
@@ -52,5 +53,13 @@
         </div>
 
         </div>
+    </div>
     </Route>
 </Router>
+
+<style>
+    .box {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+</style>

@@ -1,15 +1,21 @@
 <script>
     import { link } from 'svelte-navigator';
+    import dictionary from '../services/dictPaises';
+    import { onMount } from 'svelte';
+    const countriesArray = Object.entries(dictionary)
+    const correctNames = countriesArray.filter(word => !word[0].includes(" "));
+    let randomCountry = correctNames[Math.floor(Math.random() * correctNames.length)][0]
+    onMount(async () => {
+    randomCountry = correctNames[Math.floor(Math.random() * correctNames.length)][0]
+})
+
 </script>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <!-- <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-      </a> -->
-      <div class="logo">
+      <a class="navbar-item" href="/" use:link>
         <img src="/logoSvelte.PNG" width="112" height="28" alt="">
-      </div>
+      </a>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -19,10 +25,10 @@
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
-          Explorar Fotos
+        <a href="/countries/{randomCountry}" use:link class="navbar-item">
+          Mirar un país al azar
         </a>
-        <a class="navbar-item">
+        <a href="/countries" use:link class="navbar-item">
           Explorar por Lugares
         </a>
       </div>
