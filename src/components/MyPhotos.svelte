@@ -6,11 +6,11 @@
 
     const galleryStore = get(gallery);
     const favouritesStore = get(favourites);
-    const favouriteNamesStore = get(favouriteNames);
+    let favouriteNamesStore = get(favouriteNames);
 
-    // favouriteNames.suscribe(favNames => {
-    //     favouriteNamesStore = favNames;
-    // })
+    favouriteNames.subscribe((newVal) => {
+        favouriteNamesStore = newVal;
+    })
 
 </script>
 
