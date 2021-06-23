@@ -5,13 +5,13 @@
     export let idPhoto;
     export let url;
     export let code;
-
-    let show = false
+    export let category;
     export let flags = false;
     export let favourites = false;
 
+    let show = false
+
 	function toggleShow() {
-        console.log(show);
 		show = !show
 	}
 </script>
@@ -23,9 +23,9 @@
         </a>
         {#if show}
             {#if favourites}
-                <Favourite photoId={code}></Favourite>
+                <Favourite photoId={code} category={category}></Favourite>
             {:else}
-                <Favourite photoId={idPhoto}></Favourite>
+                <Favourite photoId={idPhoto} category={category}></Favourite>
             {/if}
 
         {/if}   

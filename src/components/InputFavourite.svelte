@@ -22,10 +22,15 @@
         favouriteNames.update(() => {
             return favouriteNamesUpdated;
         })
-        const favouritesUpdated = get(favourites);
-        favouritesUpdated.splice(i_fn, 1);
-        favourites.update(() => {
-            return favouritesUpdated;
+        favourites.update((existing) => {
+            Object.entries(existing).forEach(cat_tup => {
+                const cat = cat_tup[0]
+                const arr_cat = cat_tup[1]
+                arr_cat.splice(i_fn, 1)
+                existing[cat] = arr_cat
+                }
+            )
+            return existing
         })
     }
 

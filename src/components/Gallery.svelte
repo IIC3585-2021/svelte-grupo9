@@ -5,22 +5,23 @@
     import { gallery } from '../store'
     import { get } from 'svelte/store'
     const getGalleryPhoto = async () => {
-        if (get(gallery).length === 0) {
+        console.log('hola')
+        if (get(gallery)["random"].length === 0) {
             const data = await getRandomPhoto()
-            console.log(data);
             gallery.update(existing => {
-                return data;
+                existing["random"] = data
+                return existing
             })
             console.log(get(gallery))
             return data
         }
         else {
-            return get(gallery)
+            return get(gallery)["random"]
         }
     }
 </script>
 
-<Gallery gap="10" maxColumnWidth="200">
+<Gallery gap="10" maxColumnWidth="200" category="random">
 
     {#await getGalleryPhoto()}
         <Loading />

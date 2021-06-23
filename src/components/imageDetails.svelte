@@ -5,7 +5,9 @@
     import { get } from 'svelte/store'
 
     export let photoid;
-    const data = get(gallery)[photoid]
+    export let category;
+
+    const data = get(gallery)[category][photoid]
     
     const img = data["urls"]["regular"]
     const img_user = data['user']['profile_image']['medium']
@@ -48,7 +50,7 @@
                 <time>{date}</time>
             </div>
             <div class="content">
-                <Favourite photoId={parseInt(photoid)}></Favourite>
+                <Favourite photoId={parseInt(photoid)} category={category}></Favourite>
             </div>
         </div>
 

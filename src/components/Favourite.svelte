@@ -6,36 +6,38 @@
   import { colors } from '../colors'
 
   export let photoId;
+  export let category;
+  let isFavourite = []
 
-  let favs = get(favourites);
-
+  console.log('fab', category)
   const handleClick = (i) => {
       console.log(i, photoId)
-      if (favs[i].includes(photoId)){
+      if (favs[category][i].includes(photoId)){
           const newFavs = favs;
-          newFavs[i] = favs[i].filter(item => item !== photoId);
+          newFavs[category][i] = favs[category][i].filter(item => item !== photoId);
           favourites.update(() => {return newFavs})
           isFavourite[i] = false;
       }
       else{
-          favs[i].push(photoId);
+          favs[category][i].push(photoId);
           favourites.update(() => {return favs})
           isFavourite[i] = true;
       }
   }
 
-  let isFavourite = []
   const favouriteNamesArr = get(favouriteNames);
-  
-  favs.forEach(arr => {
-      if (arr.includes(photoId)){
-          isFavourite.push(true);
-          console.log("si es favorito")
-      }
-      else{
-          isFavourite.push(false);
-      }
-  });
+  let favs = get(favourites);
+  console.log(favs)
+
+    favs[category].forEach((arr) => {
+        if (arr.includes(photoId)){
+            isFavourite.push(true);
+            console.log("si es favorito")
+        }
+        else{
+            isFavourite.push(false);
+        }
+    })
 
   favourites.subscribe((newVal) => {
         favs = newVal;

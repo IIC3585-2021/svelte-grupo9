@@ -1,9 +1,9 @@
 import {writable} from 'svelte/store'
 
 const username = writable(localStorage.getItem("username") || "")
-const gallery = writable(JSON.parse(localStorage.getItem("gallery")) || [])
-const favourites = writable(JSON.parse(localStorage.getItem("favourites")) || [[], [], []])
-const favouriteNames = writable(JSON.parse(localStorage.getItem("favouriteNames")) || ["Favoritos 1", "Favoritos 2", "Fav 3"])
+const gallery = writable(JSON.parse(localStorage.getItem("gallery")) || {'random': []})
+const favourites = writable(JSON.parse(localStorage.getItem("favourites")) || {'random': [[], [], []]})
+const favouriteNames = writable(JSON.parse(localStorage.getItem("favouriteNames")) || ["Favoritos 1", "Favoritos 2", "Favoritos 3"])
 
 username.subscribe(val => localStorage.setItem("username", val));
 gallery.subscribe(val => {localStorage.setItem("gallery", JSON.stringify(val))});

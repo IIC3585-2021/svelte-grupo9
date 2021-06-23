@@ -1,13 +1,12 @@
 <script>
     import { onMount } from 'svelte';
-    import { link } from 'svelte-navigator';
-    import Favourite from './Favourite.svelte';
     import ImageContainer from './ImageContainer.svelte';
 
     export let gap = 10;
     export let maxColumnWidth = 250;
     export let flag = false;
     export let favourite = false;
+    export let category;
     
     let slotHolder = null;
     let columns = [];
@@ -47,7 +46,7 @@
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
             <!-- {console.log(imageIds[url])} -->
-            <ImageContainer favourites={favourite} code={imageIds[url]} idPhoto={i + j * columnCount} url={url} flags={flag}></ImageContainer>
+            <ImageContainer favourites={favourite} code={imageIds[url]} idPhoto={i + j * columnCount} url={url} flags={flag} category={category}></ImageContainer>
         {/each}
     </div>
     {/each}
