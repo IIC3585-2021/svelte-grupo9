@@ -1,16 +1,29 @@
 <script>
-import Gallery from './ModifiedGallery.svelte';
-import {getPhotoById} from '../services/unsplash';
-import { Loading } from "carbon-components-svelte";
-
- const getPhotos = (country) => {
-    return getPhotoById({featured: true}, country)
- }
+	import Gallery from './ModifiedGallery.svelte';
+    import {getRandomPhoto} from '../services/unsplash';
+    import { Loading } from "carbon-components-svelte";
+    import { gallery } from '../store'
+    import { get } from 'svelte/store'
+    const getGalleryPhoto = async () => {
+        console.log('gola', get(gallery))
+        if (get(gallery).length === 0) {
+            const data = await getRandomPhoto()
+            console.log(data);
+            gallery.update(existing => {
+                return data;
+            })
+            console.log(get(gallery))
+            return data
+        }
+        else {
+            return get(gallery)
+        }
+    }
 </script>
 
 <Gallery gap="10" maxColumnWidth="200">
 
-    {#await getPhotos("chile")}
+    {#await getGalleryPhoto()}
         <Loading />
     {:then data} 
         {#each data as usImage}
