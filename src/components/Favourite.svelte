@@ -42,9 +42,9 @@
         <div class="fav">
             <button on:click={() => handleClick(i)} style={`background-color: ${colors[i]};`}>
                 {#if bool}
-                        <FavoriteFilled20/>
+                    <div class="desactivated"><FavoriteFilled20/></div>
                 {:else}
-                        <Favorite20/>
+                    <div class="desactivated"><Favorite20/></div>
                 {/if}
             </button>
             <div class = "name"><p><small>{favouriteNamesArr[i]}</small></p></div>
@@ -61,5 +61,7 @@
     .name{
         margin-left: 5px;
     }
-
-</style>
+    .desactivated{
+        pointer-events: none
+    }
+</style>   
