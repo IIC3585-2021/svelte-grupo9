@@ -45,7 +45,8 @@
     <div class="column">
         {#each column as url, j}
         <!-- cambiar esto por la info del localstorage -->
-            <ImageContainer idPhoto={i + j * columnCount} url={url} ></ImageContainer>
+            <!-- {console.log(imageIds[url])} -->
+            <ImageContainer code={imageIds[url]} idPhoto={i + j * columnCount} url={url} flags={flag}></ImageContainer>
         {/each}
     </div>
     {/each}

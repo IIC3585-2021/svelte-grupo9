@@ -2,8 +2,9 @@
 	import Navbar from './components/Navbar.svelte';
 	import { Router, Route } from "svelte-navigator";
 	import Detail from './components/imageDetails.svelte';
-	import MyGallery from './components/ModifiedGallery.svelte';
+	import MyGallery from './components/Gallery.svelte';
 	import GalleryCountries from './components/CountriesGalery.svelte'
+	import flagsGallery from './components/flagsGallery.svelte';
 
 </script>
 <Router>
@@ -21,7 +22,8 @@
 	
 		<!-- <Route path="photo/:id" component={Detail} /> -->
 		<Route path="photo/*photoid" component={Detail} />
-		<Route path="countries" component={GalleryCountries} />
+		<Route path="countries" component={flagsGallery} />
+		<Route path="countries/*countryname" component={GalleryCountries} />
 	
 </Router>
 <style>

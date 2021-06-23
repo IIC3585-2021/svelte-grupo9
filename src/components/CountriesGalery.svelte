@@ -1,7 +1,7 @@
 <script>
 import Gallery from './ModifiedGallery.svelte';
 import {getPhotosByCountry} from '../services/unsplash';
-export let country;
+export let countryname;
 import { Router, Route } from "svelte-navigator";
 import { Loading } from "carbon-components-svelte";
 
@@ -10,57 +10,24 @@ import { Loading } from "carbon-components-svelte";
  }
 </script>
 
-<h1>Chile</h1>
-<Gallery gap="7" maxColumnWidth="200">
 
-    {#await getPhotos("chile")}
-        <Loading />
-    {:then data} 
-        {#each data as usImage}
-            <img id="{usImage["id"]}" src="{usImage["urls"]["regular"]}" alt="">
-        {/each}  
-    {/await}
+<Router>
+    <Route path={countryname} let:params>
+        <h1>{countryname}</h1>
+        <Gallery gap="7" maxColumnWidth="200">
 
-</Gallery>
+            {#await getPhotos("chile")}
+                <Loading />
+            {:then data} 
+                {#each data as usImage}
+                    <img id="{usImage["id"]}" src="{usImage["urls"]["regular"]}" alt="">
+                {/each}  
+            {/await}
 
-<h1>Argentina</h1>
-<Gallery gap="7" maxColumnWidth="200">
+        </Gallery>
+    </Route>
+</Router>
 
-    {#await getPhotos("argentina")}
-        <Loading />
-    {:then data} 
-        {#each data as usImage}
-            <img id="{usImage["id"]}" src="{usImage["urls"]["regular"]}" alt="">
-        {/each}  
-    {/await}
-
-</Gallery>
-
-<h1>Italia</h1>
-<Gallery gap="7" maxColumnWidth="200">
-
-    {#await getPhotos("italia")}
-        <Loading />
-    {:then data} 
-        {#each data as usImage}
-            <img id="{usImage["id"]}" src="{usImage["urls"]["regular"]}" alt="">
-        {/each}  
-    {/await}
-
-</Gallery>
-
-<h1>China</h1>
-<Gallery gap="7" maxColumnWidth="200">
-
-    {#await getPhotos("china")}
-        <Loading />
-    {:then data} 
-        {#each data as usImage}
-            <img id="{usImage["id"]}" src="{usImage["urls"]["regular"]}" alt="">
-        {/each}  
-    {/await}
-
-</Gallery>
 
 <style>
 	:global(img) { opacity: .9; transition: all .2s }
