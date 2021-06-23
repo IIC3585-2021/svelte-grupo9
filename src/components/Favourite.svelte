@@ -7,7 +7,7 @@
 
   export let photoId;
 
-  const favs = get(favourites);
+  let favs = get(favourites);
 
   const handleClick = (i) => {
       console.log(i, photoId)
@@ -30,11 +30,16 @@
   favs.forEach(arr => {
       if (arr.includes(photoId)){
           isFavourite.push(true);
+          console.log("si es favorito")
       }
       else{
           isFavourite.push(false);
       }
   });
+
+  favourites.subscribe((newVal) => {
+        favs = newVal;
+    })
 </script>
 
 <div>
