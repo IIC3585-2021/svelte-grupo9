@@ -8,6 +8,17 @@
     let favouritesStore = get(favourites);
     let favouriteNamesStore = get(favouriteNames);
 
+    const addFav = () => {
+        favourites.update((existing) => {
+            existing.push([])
+            return existing
+        })
+        favouriteNames.update((existing) => {
+            existing.push('')
+            return existing
+        })
+    }
+
     favouriteNames.subscribe((newVal) => {
         favouriteNamesStore = newVal;
     })
@@ -31,5 +42,17 @@
             </Gallery>
         <!-- {/each} -->
     {/each}
+    <div class="buttons" id="add" on:click={addFav}>
+        <div class="button is-primary" >
+          <strong>Agregar categoria</strong>
+        </div>
+    </div>
 </div>
 
+<style>
+    #add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
