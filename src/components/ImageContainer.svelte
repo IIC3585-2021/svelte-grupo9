@@ -8,6 +8,7 @@
 
     let show = false
     export let flags = false;
+    export let favourites = false;
 
 	function toggleShow() {
         console.log(show);
@@ -21,7 +22,12 @@
             <img src={url} alt="">
         </a>
         {#if show}
+            {#if favourites}
+                <Favourite photoId={code}></Favourite>
+            {:else}
                 <Favourite photoId={idPhoto}></Favourite>
+            {/if}
+
         {/if}   
     {:else}
         <a use:link href="countries/{code}" replace>

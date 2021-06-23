@@ -23,7 +23,7 @@
     {#each favouriteNamesStore as favouriteName, i_fn}
         <InputFavourite i_fn={i_fn} favouriteName={favouriteName} />
         <!-- {#each favouritesStore as collection} -->
-            <Gallery gap="10" maxColumnWidth="200">
+            <Gallery gap="10" maxColumnWidth="200" favourite={true}>
                 {#each favouritesStore[i_fn] as photoNumber}
                     {console.log("nro foto", photoNumber)}
                     <img id="{photoNumber}" src="{galleryStore[photoNumber]["urls"]["regular"]}" alt="">
